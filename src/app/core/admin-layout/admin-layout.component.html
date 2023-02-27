@@ -1,0 +1,28 @@
+<div class="app mat-typography" [dir]="options.dir"
+  [ngClass]="{'app-dark': options.dark, 'boxed': options.boxed, 'collapsed-sidebar': options.collapsed, 'compact-sidebar': options.compact, 'side-panel-opened': sidePanelOpened, 'side-panel-closed': !sidePanelOpened }">
+  <ngx-loading-bar color="#009688"></ngx-loading-bar>
+  <app-header></app-header>
+  <div id="container">
+    <div id="container-panels">
+      <div id="left-panel">
+        <ul>
+          <li (click)="handleClick('patientRecords',false)">Patient Records<object data="assets/images/search.png"
+              width="20" height="20"> </object></li>
+          <li (click)="handleClick('shedule',false)">diary<object data="assets/images/diary.jpg" width="20"
+              height="20"> </object></li>
+          <li (click)="handleClick('patientRecords',false)">month graph<object data="assets/images/piechart.png"
+              width="20" height="20"> </object></li>
+          <li (click)="handleClick('messages',false)">messages<object data="assets/images/messgae.jpg" width="20"
+              height="20"> </object></li>
+          <li (click)="handleClick('patientRecords',false)">patient info<object data="assets/images/info.png" width="20"
+              height="20"> </object></li>
+        </ul>
+      </div>
+      <div [perfectScrollbar]="config" [disabled]="mediaMatcher.matches" id="right-panel">
+        <div class="mainbody-inner">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

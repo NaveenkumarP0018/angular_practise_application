@@ -1,0 +1,84 @@
+<div fxLayout="row wrap">
+
+  <div fxFlex="30">
+    <button mat-raised-button class="addbutton" title="Add" (click)="addUser()">Add</button>
+  </div>
+
+  <div fxFlex="70" class="search-align pad-rgt">
+    <div fxFlex="95">
+      <mat-form-field>
+        <input matInput [(ngModel)]="searchdata" (keyup)="applyFilterDataSouce($event.target.value)" autocomplete="off"
+          placeholder="Search">
+      </mat-form-field>
+    </div>
+  </div>
+
+</div>
+<div *ngIf="searchdata=='' ? totalUsers?.length>0 : dataSource.filteredData?.length>0"
+  class="example-container mat-elevation-z8 no-shadow bord-all">
+  <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData()" class="listtable">
+    <!-- Position Column -->
+    <ng-container matColumnDef="riskScale">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Risk Scale</mat-header-cell>
+      <mat-cell *matCellDef="let element" id="riskScale"> {{element.riskScale}}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="contactParent">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-login">Contact Parent
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="mat-column-login"> {{element.contactParent}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="childName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-login">
+        Child Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="mat-column-login"> {{element.childName}} </mat-cell>
+    </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="lastHandlingData">
+      <mat-header-cell *matHeaderCellDef class="mat-column-rolename">Last Handling date
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="mat-column-rolename">
+        {{element.lastHandlingData}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="dob">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Date Of Birth </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dob}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="mat-column-actions">
+        Actions </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="mat-column-actions">
+        <span>
+          <i class="ti-pencil-alt link" matTooltip="Edit" (click)="editUser(element)"></i>
+          <i class="ti-trash link" matTooltip="Delete" (click)="deleteUser(element)"></i>
+        </span>
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <div *ngIf="totalUsers.length>pageSize && searchdata==''">
+    <mat-paginator [length]="totalUsers.length" [pageSize]="pageSize" [pageIndex]="listPage" showFirstLastButtons
+      (page)="getListData($event)"></mat-paginator>
+
+  </div>
+</div>
+<div *ngIf="(searchdata=='' ? totalUsers?.length==0 : dataSource.filteredData.length==0)" class="norecordsfound">
+  {{totalUsers?.length==0 ?'No Records Found': 'No data was found with your filter selection' }}
+</div>
+<div class="fullloader" *ngIf="loading">
+  <div class="fullloaderInner">
+    <img src="assets/images/loading.gif">
+  </div>
+</div>

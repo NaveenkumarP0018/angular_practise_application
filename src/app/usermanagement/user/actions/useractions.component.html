@@ -1,0 +1,17 @@
+<ng-template [ngIf]="deleteAction">
+  <h1 mat-dialog-title>Delete Patient Record</h1>
+  <div mat-dialog-content>
+    <p>Do You Want Delete Record <b>{{_userdata.name}}</b> ?</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onDeleteUser()" color="primary">ok</button>
+    <button mat-button (click)="onNoClick()" cdkFocusInitial color="primary">no Thanks</button>
+  </div>
+</ng-template>
+
+
+<div class="fullloader" *ngIf="loading">
+  <div class="fullloaderInner">
+    <img src="assets/images/loading.gif">
+  </div>
+</div>

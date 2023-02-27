@@ -1,0 +1,37 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" class="session sec-left">
+      <div class="session-content">
+          <div class="session-wrapper" style="border-radius: 9px;">
+              <form [formGroup]="signupForm">
+                  <h2>Register</h2>
+                  <mat-form-field style="width: 100%">
+                      <input matInput autofocus placeholder="Username" formControlName="name" allow-email-charecters
+                          maxlength="30" minlength="5" required>
+                      <mat-error *ngIf="signupForm.controls['name'].errors && signupForm.controls['name'].touched">
+                          <div *ngIf="signupForm.controls['name'].errors?.required">Username is Required</div>
+                      </mat-error>
+                  </mat-form-field>
+                  <mat-form-field style="width: 100%">
+                      <input matInput type="password" placeholder="Password" formControlName="password" minlength="5"
+                          maxLength="30" allow-all-nospace required>
+                      <mat-error
+                          *ngIf="signupForm.controls['password'].errors && signupForm.controls['password'].touched">
+                          <div *ngIf="signupForm.controls['password'].errors?.required">Password is Required</div>
+                      </mat-error>
+                  </mat-form-field>
+                  <mat-form-field style="width: 100%">
+                      <input matInput type="email" placeholder="Email" formControlName="email" minlength="5"
+                          maxLength="30" allow-all-nospace required>
+                      <mat-error
+                          *ngIf="signupForm.controls['email'].errors && signupForm.controls['email'].touched">
+                          <div *ngIf="signupForm.controls['email'].errors?.required">Email is Required</div>
+                      </mat-error>
+                  </mat-form-field>
+
+                  <span (click)="redirectTo()">Login</span>
+                  <button type="submit" id="submit" (click)="saveData()">Submit</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
