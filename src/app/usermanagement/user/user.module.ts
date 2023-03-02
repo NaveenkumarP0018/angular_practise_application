@@ -4,7 +4,6 @@ import { RouterModule, Router } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { UsermanagementComponent } from './manage/usermanagement.component';
 import { UserRoutes } from './user.routing';
 import { UsercreateComponent } from './create/usercreate.component';
@@ -16,11 +15,9 @@ import { UserActionsComponent } from './actions/useractions.component';
   imports: [
     CommonModule,
     RouterModule.forChild(UserRoutes),
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    Ng2SearchPipeModule,
     MaterialModule
   ],
   declarations: [UsermanagementComponent, UsercreateComponent, UserFilterPipe,UserActionsComponent],

@@ -1,9 +1,7 @@
 <div fxLayout="row wrap">
-
   <div fxFlex="30">
     <button mat-raised-button class="addbutton" title="Add" (click)="addUser()">Add</button>
   </div>
-
   <div fxFlex="70" class="search-align pad-rgt">
     <div fxFlex="95">
       <mat-form-field>
@@ -57,8 +55,10 @@
         Actions </mat-header-cell>
       <mat-cell *matCellDef="let element" class="mat-column-actions">
         <span>
-          <i class="ti-pencil-alt link" matTooltip="Edit" (click)="editUser(element)"></i>
-          <i class="ti-trash link" matTooltip="Delete" (click)="deleteUser(element)"></i>
+          <i class="ti-pencil-alt link" matTooltip="Edit" (click)="editUser(element)"><img
+              src="assets/images/editIcon.png" width="20" height="20" /></i>
+          <i class="ti-trash link" matTooltip="Delete" (click)="deleteUser(element)"><img src="assets/images/delete.png"
+              width="20" height="20" /></i>
         </span>
       </mat-cell>
     </ng-container>
@@ -76,9 +76,4 @@
 </div>
 <div *ngIf="(searchdata=='' ? totalUsers?.length==0 : dataSource.filteredData.length==0)" class="norecordsfound">
   {{totalUsers?.length==0 ?'No Records Found': 'No data was found with your filter selection' }}
-</div>
-<div class="fullloader" *ngIf="loading">
-  <div class="fullloaderInner">
-    <img src="assets/images/loading.gif">
-  </div>
 </div>

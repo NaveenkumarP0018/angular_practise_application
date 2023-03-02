@@ -2,7 +2,6 @@
     <div fxFlex="50">
         <h1 style="color:blueviolet">Schedule meetings with children</h1>
     </div>
-
 </div>
 <mat-card-content>
     <form [formGroup]="patientForm">
@@ -11,11 +10,6 @@
                 <mat-form-field style="width: 30%;">
                     <input matInput cdkFocusInitial placeholder="ChildName" formControlName="childName"
                         allow-email-charecters maxlength="50" minlength="2" autocomplete="off">
-                    <!-- <mat-error *ngIf="patientForm.controls.childName.errors?.required">
-                        This is Required filed
-                    </mat-error>
-                    <mat-error *ngIf="patientForm.get('childName').hasError('minlength')">
-                        minlength is 2</mat-error> -->
                 </mat-form-field>
                 &nbsp;
                 <mat-form-field style="width: 30%;">
@@ -23,11 +17,6 @@
                         readonly (focus)="picker.open()">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker type="date"></mat-datepicker>
-                    <!-- <mat-error *ngIf="patientForm.controls.meetingData.errors">
-                        <div *ngIf="patientForm.controls.meetingData.errors.required">
-                            This is required field
-                        </div>
-                    </mat-error> -->
                 </mat-form-field>
             </div>
             <div class="col-sm-12 clearfix mar-top">
@@ -41,11 +30,8 @@
 <ng-template [ngIf]="isSubmitedMeeting">
     <h1 mat-dialog-title>Delete Patient Record</h1>
     <div mat-dialog-content>
-      <p>Do You Want Delete Record <b></b> ?</p>
+        <p>Do You Want Delete Record <b></b> ?</p>
     </div>
     <div mat-dialog-actions>
-      <!-- <button mat-button (click)="onDeleteUser()" color="primary">ok</button>
-      <button mat-button (click)="onNoClick()" cdkFocusInitial color="primary">no Thanks</button> -->
     </div>
-  </ng-template>
-<!-- </div> -->
+</ng-template>

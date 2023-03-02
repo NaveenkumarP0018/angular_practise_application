@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TooltipPosition } from '@angular/material/tooltip';
-import { ToastrService } from 'ngx-toastr';
 import { ActionType, AlertMessageService } from '../../_services/AlertMessageService';
 
 @Component({
@@ -20,7 +19,7 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   users: any[] = JSON.parse(localStorage.getItem('users')) || [];
 
-  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private alertMessage: AlertMessageService) {
+  constructor(private fb: FormBuilder, private router: Router, private alertMessage: AlertMessageService) {
   }
 
   ngOnInit() {

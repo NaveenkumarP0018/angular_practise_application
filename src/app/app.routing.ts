@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 import { SigninComponent } from './login/signin/signin.component';
 import { SignupComponent } from './login/signup/signup.component';
-import { AdminLayoutComponent, AuthLayoutComponent } from './core';
+import { AdminLayoutComponent } from './core';
 
 export const AppRoutes: Routes = [
   {
@@ -30,24 +30,5 @@ export const AppRoutes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
-  }, {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-
-      {
-        path: 'session',
-        loadChildren: () => import('./session/session.module').then(m => m.SessionModule)
-      },]
-  }, {
-    path: '401',
-    redirectTo: 'session/401'
-  },
-  {
-    path: '403',
-    redirectTo: 'session/403'
-  },
-  {
-    path: '**',
-    redirectTo: 'session/404'
-  }];
+  }
+];

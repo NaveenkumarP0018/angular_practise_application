@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { SheduleBookingRoutes } from './shedulebooking.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MaterialModule } from '../_shared/material.module';
 import { ActionsComponent } from './actions/actions.component';
 
@@ -20,7 +19,6 @@ import { ActionsComponent } from './actions/actions.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    Ng2SearchPipeModule,
     MaterialModule
   ],
   providers: [

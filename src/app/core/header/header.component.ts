@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output, OnDestroy, OnInit, Input } from '@angular/core';
-import * as screenfull from 'screenfull';
+import { Component,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,15 +6,7 @@ import * as screenfull from 'screenfull';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  @Output() toggleSidenav = new EventEmitter<void>();
   constructor() {
-  }
-
-  fullScreenToggle(): void {
-    if (screenfull.enabled) {
-      screenfull.toggle();
-    }
   }
 
   ngOnInit() {

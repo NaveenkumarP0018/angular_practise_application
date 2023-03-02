@@ -25,26 +25,17 @@ const patientDetils: any[] = [
   styleUrls: ['./usermanagement.component.scss']
 })
 export class UsermanagementComponent implements OnInit {
-  listflag: boolean = false;
   initPage = 0;
   listPage = 0;
   pageSize = 5;
   public searchdata: string = '';
   totalUsers: any[] = [];
   public filterUsers: any[] = [];
-  loading: boolean = false;
   displayedColumns = ['riskScale', 'contactParent', 'childName', 'lastHandlingData', 'dob', 'actions'];
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   dataSource = new MatTableDataSource();
-  _deptStatus: number = 1;
-  _filterType = '';
-  loadTotalUsers: IUser[] = [];
-  roleType = '-1'
-  depts = '-1'
   data = JSON.parse(localStorage.getItem('patientDetails')) || [];
-  // _roledata: IUserRole[];
-  // _deptdata: IDepartment[];
   _roleCode: string = '';
   constructor(private dialog: MatDialog, private router: Router, private alertMessage: AlertMessageService
   ) {
@@ -52,7 +43,6 @@ export class UsermanagementComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
-    console.log("naveen=>", document.querySelectorAll('listtable'))
   }
   applyFilterDataSouce(filterValue: string) {
     console.log('totalUsers=>', this.totalUsers);
@@ -70,32 +60,23 @@ export class UsermanagementComponent implements OnInit {
   }
 
   getUsers() {
-    // this.userService.getAllUsers().subscribe((response: IUser[]) => {
     if ((JSON.parse(localStorage.getItem('patientDetails')) || []).length > 0) {
       console.log("Response==>", JSON.parse(localStorage.getItem('patientDetails')) || []);
       this.totalUsers = JSON.parse(localStorage.getItem('patientDetails')) || [];
-      this.loadTotalUsers = JSON.parse(localStorage.getItem('patientDetails')) || [];
       this.dataSource = new MatTableDataSource(JSON.parse(localStorage.getItem('patientDetails')) || []);
-      // this.getAllRoles();
       this.dataSource.paginator = null;
       this.listPage = 0;
       this.initPage = 0;
-      this.getData({ pageIndex: this.initPage, pageSize: this.pageSize });
-      this.getListData({ pageIndex: this.listPage, pageSize: this.pageSize });
+      this.getListData({ pageIndex: this.initPage, pageSize: this.pageSize });
     } else {
       localStorage.setItem('patientDetails', JSON.stringify(patientDetils));
       this.totalUsers = patientDetils;
-      this.loadTotalUsers = patientDetils;
       this.dataSource = new MatTableDataSource(patientDetils);
-      // this.getAllRoles();
       this.dataSource.paginator = null;
       this.listPage = 0;
       this.initPage = 0;
-      this.getData({ pageIndex: this.initPage, pageSize: this.pageSize });
-      this.getListData({ pageIndex: this.listPage, pageSize: this.pageSize });
+      this.getListData({ pageIndex: this.initPage, pageSize: this.pageSize });
     }
-    this.loading = false;
-    // }
   }
 
   ngAfterViewInit() {
@@ -108,20 +89,7 @@ export class UsermanagementComponent implements OnInit {
     else setTimeout(() => this.alertMessage.showAlert(error, action));
   }
 
-  getData(_pageData) {
-    let index = 0;
-    let startingIndex = _pageData.pageIndex * _pageData.pageSize;
-    let endingIndex = startingIndex + _pageData.pageSize;
-    this.filterUsers = this.totalUsers.filter(() => {
-      index++;
-      return (index > startingIndex && index <= endingIndex) ? true : false;
-    });
-    this.initPage = _pageData.pageIndex;
-    console.log("UserData::" + JSON.stringify(this.filterUsers));
-  }
-
   getListData(_pageData) {
-    // this.dataSource.paginator = this.paginator;
     let index = 0;
     let startingIndex = _pageData.pageIndex * _pageData.pageSize;
     let endingIndex = startingIndex + _pageData.pageSize;
@@ -168,23 +136,6 @@ export class UsermanagementComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.data = userdetails;
     this.dialogOpen(dialogConfig);
-  }
-  loadList() {
-    this.listflag = true;
-    this.listPage = 0;
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.filterPredicate =
-      (data: IUser, filter: string) => (data.lastname != null && data.lastname.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
-        data.firstname.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
-        data.login.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
-        // (data.depts.length > 0 ? data.depts.findIndex(x => x.deptName.toLowerCase().indexOf(filter.toLowerCase()) > -1) > -1 : false) ||
-        (data.roles.length > 0 ? data.roles.findIndex(x => x.roleName.toLowerCase().indexOf(filter.toLowerCase()) > -1) > -1 : false));
-  }
-
-  loadGrid() {
-    this.listflag = false;
-    this.initPage = 0;
-    this.getData({ pageIndex: this.initPage, pageSize: this.pageSize });
   }
 
   sortData() {

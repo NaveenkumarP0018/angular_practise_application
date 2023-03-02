@@ -3,13 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MessageComponent } from './message/message.component';
 import { RouterModule } from '@angular/router';
 import { MessagesRoutes } from './message.routing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MaterialModule } from '../_shared/material.module';
-
-
-
 @NgModule({
   declarations: [
     MessageComponent
@@ -17,10 +12,7 @@ import { MaterialModule } from '../_shared/material.module';
   imports: [
     CommonModule,
     RouterModule.forChild(MessagesRoutes),
-    FormsModule,
-    ReactiveFormsModule,
     FlexLayoutModule,
-    Ng2SearchPipeModule,
     MaterialModule
   ]
 })

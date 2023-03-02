@@ -21,32 +21,16 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico",
-              "src/version.json"
+              "src/favicon.ico"
             ],
             "styles": [
-              "node_modules/dragula/dist/dragula.css",
-              "node_modules/leaflet/dist/leaflet.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "src/assets/fonts/pe/css/pe-icon-set-weather.css",
-              "src/assets/fonts/data-table/icons.css",
               "src/assets/styles/app.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/styles/themify-icons.css",
-              "src/assets/styles/prettify.css",
-              "./node_modules/font-awesome/css/font-awesome.css",
-              "src/assets/styles/custom-icons.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
               "node_modules/hammerjs/hammer.min.js",
-              "node_modules/chart.js/dist/Chart.bundle.min.js",
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/scripts/prettify.min.js",
-              "src/assets/scripts/multiselect.min.js",
-              "src/assets/scripts/image-clipper.js",
-              "src/assets/scripts/image-to-slices.js",
               "./node_modules/jquery/dist/jquery.min.js"
             ],
             "aot": true
@@ -101,25 +85,12 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [
               "node_modules/hammerjs/hammer.min.js",
-              "node_modules/chart.js/dist/Chart.bundle.min.js",
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/scripts/prettify.min.js",
-              "src/assets/scripts/multiselect.min.js",
-              "src/assets/scripts/mapjs/d3.v3.min.js",
-              "src/assets/scripts/mapjs/topojson.v1.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "styles": [
-              "node_modules/dragula/dist/dragula.css",
-              "node_modules/leaflet/dist/leaflet.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "src/assets/fonts/pe/css/pe-icon-set-weather.css",
-              "src/assets/fonts/data-table/icons.css",
               "src/assets/styles/app.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/styles/themify-icons.css",
-              "src/assets/styles/prettify.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "assets": [
               "src/assets",

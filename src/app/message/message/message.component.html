@@ -1,19 +1,19 @@
-<div *ngIf="dataSource.filteredData?.length>0" class="example-container mat-elevation-z8 no-shadow bord-all">
-    <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData()" class="listtable">
+<div *ngIf="dataSource.data?.length>0" class="example-container mat-elevation-z8 no-shadow bord-all">
+    <mat-table [dataSource]="dataSource" class="listtable">
         <!-- Position Column -->
         <ng-container matColumnDef="patientName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Patient Name</mat-header-cell>
-            <mat-cell *matCellDef="let element" id="riskScale"> {{element.patientName}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef>Patient Name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.patientName}}</mat-cell>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="contactParent">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-login">Contact Parent
+            <mat-header-cell *matHeaderCellDef class="mat-column-login">Contact Parent
             </mat-header-cell>
             <mat-cell *matCellDef="let element" class="mat-column-login"> {{element.contactParent}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="message">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-login">
+            <mat-header-cell *matHeaderCellDef class="mat-column-login">
                 Message
             </mat-header-cell>
             <mat-cell *matCellDef="let element" class="mat-column-login"> {{element.message}} </mat-cell>
@@ -29,13 +29,4 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-
-    <div *ngIf="totalUsers.length>pageSize && searchdata==''">
-        <mat-paginator [length]="totalUsers.length" [pageSize]="pageSize" [pageIndex]="listPage" showFirstLastButtons
-            (page)="getListData($event)"></mat-paginator>
-
-    </div>
-</div>
-<div *ngIf="dataSource.filteredData.length==0" class="norecordsfound">
-    {{totalUsers?.length==0 ?'No Records Found': 'No data was found with your filter selection' }}
 </div>

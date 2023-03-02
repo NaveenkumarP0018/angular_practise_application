@@ -1,0 +1,220 @@
+//List View
+.listtable {
+    border: 1px solid #dddddd !important;
+    table-layout: fixed !important;
+    width: 100%
+}
+
+.listtable .mat-cell,
+.listtable td {
+    font-family: calibri;
+    font-size: 13px;
+    font-weight: bold;
+    word-break: break-word;
+    //word-wrap: break-word;
+    padding: 10px;
+    overflow: hidden !important;
+}
+
+//.listtable .mat-row .mat-cell:first-child, .listtable .mat-header-row .mat-header-cell:first-child { padding-left: 24px }
+.listtable tr:nth-child(even),
+.listtable .mat-row:nth-child(even) {
+    background-color: #FCF3CF
+}
+
+.listtable tr:nth-child(odd),
+.listtable .mat-row:nth-child(odd) {
+    background-color: #FEF9E7
+}
+
+.listtable .mat-sort-header-container {
+    align-items: center
+}
+
+.listtable .mat-header-cell,
+.listtable th {
+    font-size: 13px;
+    // padding: 10px;
+    color: white;
+    font-weight: bold;
+    background: #45B39D;
+    overflow: hidden !important;
+    word-break: break-word;
+    word-wrap: break-word
+}
+
+.listtable .mat-header-row {
+    background: #cfcfcf
+}
+
+.listtable .mat-row {
+    min-height: inherit !important
+}
+
+// .listtable .mat-row:hover {
+//     background: #eeeeee!important
+// }
+
+.listtable .mat-row .mat-cell {
+    text-align: left;
+}
+
+table.listtable.mat-row.mat-cell {
+    text-align: left !important;
+}
+
+.listtable .mat-sort-header-button {
+    text-align: left
+}
+
+.actions {
+    justify-content: space-between;
+}
+
+.actions .mat-raised-button:last-child {
+    margin-right: 0
+}
+
+.search-align {
+    text-align: right;
+}
+
+// .profile-align{ text-align:left;}
+.rightpad-45 {
+    padding-right: 45px
+}
+
+.mar-20 {
+    margin-right: 20px
+}
+
+.full-width-table {
+    width: 100%
+}
+
+.greentext {
+    color: #117A20
+}
+
+.orangetext {
+    color: #FF7200
+}
+
+.bluetext {
+    color: #739DDF
+}
+
+.redtext {
+    color: green
+}
+
+.addbutton {
+    background-color: green;
+    color: #ffffff;
+    margin-left: 5px;
+    margin-bottom: 8px;
+}
+
+.dtable-header-top {
+    background: #fafafa;
+    border-bottom: 1px solid #e9e9e9
+}
+
+.form-actions button {
+    background-color: #333333;
+    color: #ffffff !important;
+}
+
+.submitbutton {
+    background: #333333;
+    color: #ffffff !important;
+}
+
+.submitbutton:hover {
+    color: #ffffff !important
+}
+
+body .mat-card .mat-card-header {
+    background: green;
+}
+
+.tab-lft-sec a,
+.tab-rgt-sec a {
+    color: #758697 !important;
+}
+
+.list-unstyled li a.mainmenuActive {
+    font-weight: bold;
+    font-size: 12px;
+    color: green !important;
+}
+
+.addbutton-new {
+    background: #6c6c6c;
+    color: #ffffff
+}
+
+.mar-no {
+    margin: 0 !important;
+}
+
+.mar-top {
+    margin-top: 15px !important;
+}
+
+.mar-btm {
+    margin-bottom: 15px !important;
+}
+
+.mar-rgt {
+    margin-right: 15px !important;
+}
+
+.mar-lft {
+    margin-left: 15px !important;
+}
+
+.mar-all {
+    padding: 15px !important;
+}
+
+.pad-no {
+    padding: 0 !important;
+}
+
+.pad-top {
+    padding-top: 15px !important;
+}
+
+.pad-btm {
+    padding-bottom: 15px !important;
+}
+
+.pad-rgt {
+    padding-right: 15px !important;
+}
+
+.pad-lft {
+    padding-left: 15px !important;
+}
+
+.pad-all {
+    padding: 15px !important;
+}
+
+.pad-all2 {
+    padding: 10px !important;
+}
+
+.pageheading {
+    color: green
+}
+
+.listtable.vertical-table th {
+    background-color: white !important;
+}
+
+.listtable.vertical-table tr td:first-child,
+.listtable.vertical-table tr th:first-child {
+    background: #cccccc !important;
+}
