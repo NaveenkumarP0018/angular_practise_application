@@ -1,7 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
 import * as _ from 'lodash';
-import { IUser } from './usermodel';
 // import { ILoginDto, IUser } from './usermodel';
 
 
@@ -9,8 +7,7 @@ import { IUser } from './usermodel';
     name: 'Userfilter'
 })
 export class UserFilterPipe implements PipeTransform {
-    transform(value, data: IUser[], filter: string): any {
-
+    transform(value, data: any[], filter: string): any {
         if (filter) {
             return _.filter(data, row => row.lastname != null && row.lastname.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
                 row.firstname.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||

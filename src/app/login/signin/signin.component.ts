@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ActionType, AlertMessageService } from '../../_services/AlertMessageService';
+import { AlertMessageService } from '../../_services/AlertMessageService';
 
 @Component({
   selector: 'app-signin',
@@ -46,7 +46,7 @@ export class SigninComponent implements OnInit {
       this.router.navigate(['/patientRecords']);
       this.messageflag = false;
     } else {
-      this.alertMessage.showAlert('Failed To Login',ActionType.ERROR)
+      this.alertMessage.showAlert('Failed To Login')
     }
   }
 }

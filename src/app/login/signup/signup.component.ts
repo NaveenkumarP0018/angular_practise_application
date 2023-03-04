@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TooltipPosition } from '@angular/material/tooltip';
-import { ActionType, AlertMessageService } from '../../_services/AlertMessageService';
+import { AlertMessageService } from '../../_services/AlertMessageService';
 
 @Component({
   selector: 'app-signup',
@@ -36,12 +36,12 @@ export class SignupComponent implements OnInit {
     let newUser = this.signupForm.value;
     let duplicateUser = this.users.filter(user => { return user.name === newUser.name; }).length;
     if (duplicateUser) {
-      this.alertMessage.showAlert(`Username ${newUser.name} is already taken`, ActionType.ERROR)
+      this.alertMessage.showAlert(`Username ${newUser.name} is already taken`)
     } else {
       newUser.id = this.users.length + 1;
       this.users.push(newUser);
       localStorage.setItem('users', JSON.stringify(this.users));
-      this.alertMessage.showAlert(`Username ${newUser.name} is sucessfully Added`, ActionType.SUCCESS)
+      this.alertMessage.showAlert(`Username ${newUser.name} is sucessfully Added`)
     }
   }
 }

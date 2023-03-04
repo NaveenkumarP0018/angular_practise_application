@@ -69,8 +69,8 @@
   </mat-table>
 
   <div *ngIf="totalUsers.length>pageSize && searchdata==''">
-    <mat-paginator [length]="totalUsers.length" [pageSize]="pageSize" [pageIndex]="listPage" showFirstLastButtons
-      (page)="getListData($event)"></mat-paginator>
+    <mat-paginator [length]="totalUsers.length" [pageSize]="pageSize"  aria-label="Select page">
+    </mat-paginator>
 
   </div>
 </div>

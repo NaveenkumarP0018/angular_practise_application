@@ -6,22 +6,16 @@
           <h2>Login</h2>
           <mat-form-field style="width: 100%">
             <input matInput autofocus placeholder="Username" formControlName="name" allow-email-charecters
-              maxlength="30" minlength="5" required>
-            <mat-error *ngIf="form.controls['name'].errors && form.controls['name'].touched">
-              <div *ngIf="form.controls['name'].errors?.required">Username is Required</div>
-            </mat-error>
+              maxlength="30" minlength="5">
           </mat-form-field>
           <mat-form-field style="width: 100%">
             <input matInput type="password" placeholder="Password" formControlName="password" minlength="5"
-              maxLength="30" allow-all-nospace required>
-            <mat-error *ngIf="form.controls['password'].errors && form.controls['password'].touched">
-              <div *ngIf="form.controls['password'].errors?.required">Password is Required</div>
-            </mat-error>
+              maxLength="30" allow-all-nospace>
           </mat-form-field>
           <span (click)="redirectTo()">Register</span>
-          <button mat-raised-button color="primary" type="submit"  [disabled]="!form.valid" (click)="onSubmit(form.value)" style="padding: 10px;">Sign in</button>&nbsp;
+          <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid"
+            (click)="onSubmit(form.value)" style="padding: 10px;">Sign in</button>&nbsp;
         </form>
-        <div *ngIf="messageflag">Failed To Login</div>
       </div>
     </div>
   </div>

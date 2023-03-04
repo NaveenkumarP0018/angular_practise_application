@@ -5,9 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UsercreateComponent } from '../create/usercreate.component';
 import { Router } from '@angular/router';
-import { IUser } from '../_model/usermodel';
 import * as _ from 'lodash';
-import { AlertMessageService, ActionType } from '../../../_services/AlertMessageService';
+import { AlertMessageService } from '../../../_services/AlertMessageService';
 import { UserActionsComponent } from '../actions/useractions.component';
 
 const patientDetils: any[] = [
@@ -25,8 +24,6 @@ const patientDetils: any[] = [
   styleUrls: ['./usermanagement.component.scss']
 })
 export class UsermanagementComponent implements OnInit {
-  initPage = 0;
-  listPage = 0;
   pageSize = 5;
   public searchdata: string = '';
   totalUsers: any[] = [];
@@ -36,7 +33,6 @@ export class UsermanagementComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   dataSource = new MatTableDataSource();
   data = JSON.parse(localStorage.getItem('patientDetails')) || [];
-  _roleCode: string = '';
   constructor(private dialog: MatDialog, private router: Router, private alertMessage: AlertMessageService
   ) {
   }
@@ -45,10 +41,8 @@ export class UsermanagementComponent implements OnInit {
     this.getUsers();
   }
   applyFilterDataSouce(filterValue: string) {
-    console.log('totalUsers=>', this.totalUsers);
     if (filterValue == '' || filterValue == null) {
       this.dataSource = new MatTableDataSource(this.totalUsers);
-      this.getListData({ pageIndex: this.listPage, pageSize: this.pageSize });
     }
     else {
       this.dataSource.filter = filterValue.toLowerCase().trim();
@@ -61,53 +55,18 @@ export class UsermanagementComponent implements OnInit {
 
   getUsers() {
     if ((JSON.parse(localStorage.getItem('patientDetails')) || []).length > 0) {
-      console.log("Response==>", JSON.parse(localStorage.getItem('patientDetails')) || []);
       this.totalUsers = JSON.parse(localStorage.getItem('patientDetails')) || [];
       this.dataSource = new MatTableDataSource(JSON.parse(localStorage.getItem('patientDetails')) || []);
-      this.dataSource.paginator = null;
-      this.listPage = 0;
-      this.initPage = 0;
-      this.getListData({ pageIndex: this.initPage, pageSize: this.pageSize });
+      this.dataSource.paginator = this.paginator;
     } else {
       localStorage.setItem('patientDetails', JSON.stringify(patientDetils));
       this.totalUsers = patientDetils;
       this.dataSource = new MatTableDataSource(patientDetils);
-      this.dataSource.paginator = null;
-      this.listPage = 0;
-      this.initPage = 0;
-      this.getListData({ pageIndex: this.initPage, pageSize: this.pageSize });
     }
   }
 
   ngAfterViewInit() {
     setTimeout(() => { this.dataSource.sort = this.sort, this.dataSource.paginator = this.paginator });
-  }
-
-  showAlert(error: any, action: ActionType, status: number = 0) {
-    if (status == 401 || status == 403)
-      this.router.navigate([status + '']);
-    else setTimeout(() => this.alertMessage.showAlert(error, action));
-  }
-
-  getListData(_pageData) {
-    let index = 0;
-    let startingIndex = _pageData.pageIndex * _pageData.pageSize;
-    let endingIndex = startingIndex + _pageData.pageSize;
-    this.filterUsers = this.totalUsers.filter(() => {
-      index++;
-      return (index > startingIndex && index <= endingIndex) ? true : false;
-    });
-    if (this.searchdata != '') {
-      this.dataSource = new MatTableDataSource(this.totalUsers);
-      this.dataSource.filter = this.searchdata.toLowerCase().trim();
-      this.dataSource.filterPredicate =
-        (data: any, filter: string) => (data.contactParent != null && data.contactParent.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
-          data.childName.toLowerCase().indexOf(filter.toLowerCase()) > -1)
-    }
-    else {
-      this.dataSource = new MatTableDataSource(this.filterUsers);
-      this.listPage = _pageData.pageIndex;
-    }
   }
 
   addUser() {

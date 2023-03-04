@@ -23,7 +23,7 @@
             <mat-header-cell *matHeaderCellDef class="mat-column-rolename">Status
             </mat-header-cell>
             <mat-cell *matCellDef="let element" class="mat-column-rolename">
-                {{element.Status}}
+                <button class="btn btn-sm btn-primary" (click)="sendEmail(element)">{{element.Status == 1? 'send Email' : 'Sent Email sucessfully'}}</button>
             </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
